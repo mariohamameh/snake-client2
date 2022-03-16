@@ -9,7 +9,11 @@ const connect = function () {
 
   // interpret incoming data as text
   conn.setEncoding("utf8");
-
+  conn.on("connect", () => {
+    // code that does something when the connection is first established
+    console.log("somebody just joined!");
+    conn.write("Name: MAR");
+  });
   return conn;
 };
 conn.on("data", (data) => {
